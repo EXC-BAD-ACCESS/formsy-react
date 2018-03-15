@@ -337,6 +337,7 @@ class Formsy extends React.Component {
 
   render = () => {
     const {
+      element,
       getErrorMessage,
       getErrorMessages,
       getValue,
@@ -368,7 +369,7 @@ class Formsy extends React.Component {
     } = this.props;
 
     return React.createElement(
-      'form',
+      element,
       {
         onReset: this.resetInternal,
         onSubmit: this.submit,
@@ -385,6 +386,7 @@ Formsy.displayName = 'Formsy';
 Formsy.defaultProps = {
   children: null,
   disabled: false,
+  element: 'form',
   getErrorMessage: () => {},
   getErrorMessages: () => {},
   getValue: () => {},
@@ -416,6 +418,7 @@ Formsy.defaultProps = {
 Formsy.propTypes = {
   children: PropTypes.node,
   disabled: PropTypes.bool,
+  element: PropTypes.string,
   getErrorMessage: PropTypes.func,
   getErrorMessages: PropTypes.func,
   getValue: PropTypes.func,
