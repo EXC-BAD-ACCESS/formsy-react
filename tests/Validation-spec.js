@@ -14,7 +14,7 @@ class MyTest extends React.Component {
     }
 
     render() {
-      return <input type={this.props.type} value={this.props.getValue()} onChange={this.handleChange}/>;
+      return <input type={this.props.type} value={this.props.value} onChange={this.handleChange}/>;
     }
 }
 const FormsyTest = withFormsy(MyTest);
@@ -103,29 +103,12 @@ export default {
 
   },
 
-  'should trigger the `onInvalid` handler if a required element receives `null` as the value': function (test) {
-
-    const onValid = sinon.spy();
-    const onInvalid = sinon.spy();
-
-    TestUtils.renderIntoDocument(
-      <Formsy onValid={onValid} onInvalid={onInvalid}>
-        <FormsyTest value={null} name="foo" required />
-      </Formsy>
-    );
-
-    test.equal(onValid.called, false);
-    test.equal(onInvalid.called, true);
-    test.done();
-
-  },
-
   'should be able to use provided validate function': function (test) {
 
     let isValid = false;
     const CustomInput = InputFactory({
       componentDidMount: function() {
-        isValid = this.props.isValid();
+        isValid = this.props.isValid;
       }
     });
     const form = TestUtils.renderIntoDocument(

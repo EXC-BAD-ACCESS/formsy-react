@@ -374,7 +374,6 @@ class Formsy extends React.Component {
         onReset: this.resetInternal,
         onSubmit: this.submit,
         ...nonFormsyProps,
-        disabled: false,
       },
       this.props.children,
     );
